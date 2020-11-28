@@ -238,15 +238,15 @@ function l_sliders(){
 
 function legend(){
 	fill(r_s.value(), 0, 0, 150)
-	square(width - 50, 50, 50);
+	square(width - 25, 50, 50);
 	fill(0, g_s.value(), 0, 150)
-	square(width - 50, 100, 50);
+	square(width - 25, 100, 50);
 	fill(0, 0, b_s.value(), 150)
-	square(width - 50, 150, 50);
+	square(width - 25, 150, 50);
 	
 	var a = r_s.value() + g_s.value() + b_s.value()
 	fill(r_s.value(), g_s.value(), b_s.value(), map(a, 0, 255 * 3, 0, 255))
-	square(width - 70, 200, 50);
+	square(width - 25, 200, 50);
 
 	var o3 = map(r_s.value(), 0, 255, 0, 30)
 	var pm10 = map(g_s.value(), 0, 255, 0, 50)
@@ -254,15 +254,15 @@ function legend(){
 
 	textAlign(RIGHT, CENTER);
 	fill(250)
-	text(o3.toPrecision(3), width - 60, 75);
-	text(pm10.toPrecision(3), width - 60, 125);
-	text(pm25.toPrecision(3), width - 60, 175);
-	text("COLOR", width - 60, 225);
+	text(o3.toPrecision(3), width - 50, 75);
+	text(pm10.toPrecision(3), width - 50, 125);
+	text(pm25.toPrecision(3), width - 50, 175);
+	text("COLOR", width - 50, 225);
 
 	textAlign(RIGHT, CENTER);
-	text("O3", width  - 355, 75);
-	text("PM10", width  - 355, 125);
-	text("PM2.5", width  - 355, 175);
+	text("O3", width - 15 - 355, 75);
+	text("PM10", width - 15 - 355, 125);
+	text("PM2.5", width - 15 - 355, 175);
 }
 
 function windowResized() {
