@@ -146,7 +146,7 @@ function act_slider(){
 function slider(){
 	sliderTime = createSlider(incP, fnlQ, incP, step);
 	sliderTime.position(50, windowHeight - 70);
-  	sliderTime.style('width', width - 55 + 'px');
+  	sliderTime.style('width', width - 100 + 'px');
 }
 
 function prd_ln(){
@@ -154,12 +154,12 @@ function prd_ln(){
 	fill(150)
 	textSize(20);
 	if(Cuarentena){
-		x = map(incQ, incP, fnlQ, 50, width - 55)
+		x = map(incQ, incP, fnlQ, 50, width - 100)
 		textAlign(CENTER, CENTER);
 		text("Prediccion", x,  height - 90 )
 	}
 	else{
-		x = map(incN, incP, fnlQ, 50, width - 55)
+		x = map(incN, incP, fnlQ, 50, width - 100)
 		textAlign(CENTER, CENTER);
 		text("Prediccion", x,  height - 90 )
 	}
@@ -238,11 +238,11 @@ function l_sliders(){
 
 function legend(){
 	fill(r_s.value(), 0, 0, 150)
-	square(width - 70, 50, 50);
+	square(width - 50, 50, 50);
 	fill(0, g_s.value(), 0, 150)
-	square(width - 70, 100, 50);
+	square(width - 50, 100, 50);
 	fill(0, 0, b_s.value(), 150)
-	square(width - 70, 150, 50);
+	square(width - 50, 150, 50);
 	
 	var a = r_s.value() + g_s.value() + b_s.value()
 	fill(r_s.value(), g_s.value(), b_s.value(), map(a, 0, 255 * 3, 0, 255))
@@ -254,15 +254,15 @@ function legend(){
 
 	textAlign(RIGHT, CENTER);
 	fill(250)
-	text(o3.toPrecision(3), width - 80, 75);
-	text(pm10.toPrecision(3), width - 80, 125);
-	text(pm25.toPrecision(3), width - 80, 175);
-	text("COLOR", width - 80, 225);
+	text(o3.toPrecision(3), width - 60, 75);
+	text(pm10.toPrecision(3), width - 60, 125);
+	text(pm25.toPrecision(3), width - 60, 175);
+	text("COLOR", width - 60, 225);
 
 	textAlign(RIGHT, CENTER);
-	text("O3", width - 50 - 355, 75);
-	text("PM10", width - 50 - 355, 125);
-	text("PM2.5", width - 50 - 355, 175);
+	text("O3", width  - 355, 75);
+	text("PM10", width  - 355, 125);
+	text("PM2.5", width  - 355, 175);
 }
 
 function windowResized() {
