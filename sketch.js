@@ -36,6 +36,10 @@ var ox
 var p10x
 var p25x
 
+var risk = {
+
+}
+
 
 const options = {
 	style: 'mapbox://styles/mapbox/dark-v9',
@@ -193,20 +197,20 @@ function allCt(stm){
 			noStroke()
 			// var ll = dt[c][ct]["o3_median"]["" + stm] + dt[c][ct]["pm10_median"]["" + stm] + dt[c][ct]["pm25_median"]["" + stm]
 
-			r = map(dt[c][ct]["o3_median"]["" + stm], 0, 30, 0, 255)
-			g = map(dt[c][ct]["pm10_median"]["" + stm], 0, 50, 0, 255)
-			b = map(dt[c][ct]["pm25_median"]["" + stm], 0, 80, 0, 255)
+			r = map(dt[c][ct]["o3_median"]["" + stm], 0, 220, 0, 255)
+			g = map(dt[c][ct]["pm10_median"]["" + stm], 0, 320, 0, 255)
+			b = map(dt[c][ct]["pm25_median"]["" + stm], 0, 150, 0, 255)
 
 			var ll = r + g + b
-			a = map(ll, 0, 255*3, 0, 255)
+			a = map(ll, 0, 690, 200, 255)
 			var p10x
 			var p25x
 			
 			if(c == Pais){
 				if(ct == Ciudad){
-					this.ox = map(dt[c][ct]["o3_median"]["" + stm], 0, 30, 0, 255)
-					this.p10x = map(dt[c][ct]["pm10_median"]["" + stm], 0, 50, 0, 255)
-					this.p25x = map(dt[c][ct]["pm25_median"]["" + stm], 0, 80, 0, 255)
+					this.ox = map(dt[c][ct]["o3_median"]["" + stm], 0, 220, 0, 255)
+					this.p10x = map(dt[c][ct]["pm10_median"]["" + stm], 0, 320, 0, 255)
+					this.p25x = map(dt[c][ct]["pm25_median"]["" + stm], 0, 150, 0, 255)
 				}
 			}
 
@@ -245,12 +249,12 @@ function legend(){
 	square(width - 25, 150, 50);
 	
 	var a = r_s.value() + g_s.value() + b_s.value()
-	fill(r_s.value(), g_s.value(), b_s.value(), map(a, 0, 255 * 3, 0, 255))
+	fill(r_s.value(), g_s.value(), b_s.value(), map(a, 0, 690, 200, 255))
 	square(width - 25, 200, 50);
 
-	var o3 = map(r_s.value(), 0, 255, 0, 30)
-	var pm10 = map(g_s.value(), 0, 255, 0, 50)
-	var pm25 = map(b_s.value(), 0, 255, 0, 80)
+	var o3 = map(r_s.value(), 0, 255, 0, 220)
+	var pm10 = map(g_s.value(), 0, 255, 0, 320)
+	var pm25 = map(b_s.value(), 0, 255, 0, 150)
 
 	textAlign(RIGHT, CENTER);
 	fill(250)
@@ -263,6 +267,26 @@ function legend(){
 	text("O3", width - 15 - 355, 75);
 	text("PM10", width - 15 - 355, 125);
 	text("PM2.5", width - 15 - 355, 175);
+
+	textAlign(RIGHT, CENTER);
+	text(danger(map(o3, 0, 220, 0, 200)), width - 80 - 355, 75);
+	text(danger(map(pm10, 0, 320, 0, 200)), width - 80 - 355, 125);
+	text(danger(map(pm25, 0, 150, 0, 200)), width - 80 - 355, 175);
+}
+
+function danger(lvl){
+	if(lvl <= 50){
+		return 'buena'
+	}else if(lvl <= 100){
+		return 'regular'
+	}else if(lvl <= 150){
+		return 'mala'
+	}else if(lvl <= 200){
+		return 'muy mala'
+	}else{
+		return 'pesima'
+	}
+
 }
 
 function windowResized() {
